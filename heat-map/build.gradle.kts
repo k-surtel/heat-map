@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
@@ -44,4 +45,18 @@ dependencies {
     implementation("androidx.compose.material:material:1.5.0")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
     implementation("androidx.core:core:1.10.1")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("mavenRelease") {
+                groupId = "com.ksurtel.heat_map"
+                artifactId = "heat-map"
+                version = "1.0.0"
+
+                from(components["release"])
+            }
+        }
+    }
 }
