@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val records = Records(getRecords())
+        val records = getRecords()
 
         setContent {
             HeatmapTheme {

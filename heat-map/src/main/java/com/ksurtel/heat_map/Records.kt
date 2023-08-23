@@ -1,13 +1,13 @@
 package com.ksurtel.heat_map
 
-class Records(
+internal class Records(
     private val records: List<Record>
 ) {
     private val mergedRecords = mergeRecordsByDate()
     val weeks = recordsToWeeks()
 
     fun getValuesRange(): Pair<Double, Double> {
-        val min = mergedRecords.minBy { it.value }
+        val min = mergedRecords.filter { it.value != 0.0 }.minBy { it.value }
         val max = mergedRecords.maxBy { it.value }
         return Pair(min.value, max.value)
     }

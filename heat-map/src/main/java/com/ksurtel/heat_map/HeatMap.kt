@@ -31,11 +31,12 @@ import java.util.Locale
 fun HeatMap(
     modifier: Modifier = Modifier,
     properties: Properties,
-    records: Records,
+    records: List<Record>,
     onSquareClick: (Record) -> Unit
 ) {
-    val weeks = records.weeks
-    val valuesRange = records.getValuesRange()
+    val wrappedRecords = Records(records)
+    val weeks = wrappedRecords.weeks
+    val valuesRange = wrappedRecords.getValuesRange()
     val elementsModifier = Modifier
         .height(properties.squareSideLength)
         .padding(properties.squaresPadding)
@@ -62,7 +63,7 @@ fun HeatMap(
                             )
                         val record = week.records.find { it.date.dayOfWeek.value == dayOfWeek + 1 }
                         val color =
-                            if (record == null) properties.inactiveDayColor
+                            if (record == null || record.value == 0.0) properties.inactiveDayColor
                             else getColor(
                                 record = record,
                                 valuesRange = valuesRange,
