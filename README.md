@@ -13,7 +13,7 @@ repositories {
 Next, add dependency in your module's gradle file (`build.gradle.kts`).
 ```kotlin
 dependencies {
-  implementation("com.github.kasiasurtel:heat-map:1.0.0")
+  implementation("com.github.kasiasurtel:heat-map:1.0.1")
 }
 ```
 ### Groovy
@@ -26,7 +26,7 @@ repositories {
 Then add the project dependency in module's `build.gradle` file.
 ```groovy
 dependencies {
-  implementation 'com.github.kasiasurtel:heat-map:1.0.0'
+  implementation 'com.github.kasiasurtel:heat-map:1.0.1'
 }
 ```
 ## How to use
@@ -49,6 +49,7 @@ HeatMap(
   properties = properties,
   records = records,
   onSquareClick = {
+    // replace with your code
     Toast.makeText(applicationContext, it.value.toString(), Toast.LENGTH_SHORT).show()
   }
 )
